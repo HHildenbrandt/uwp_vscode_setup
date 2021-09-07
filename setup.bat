@@ -4,6 +4,10 @@
 :: Hanno 2021
 
 setlocal
+
+:: per default, INSTALL_DIR points to the X-drive and
+:: PROJECT_DIR to X:\vscode_projects. If you are not on UWP,
+:: you can change those paths to your liking
 SET INSTALL_DIR=X:
 SET PROJECT_DIR=%INSTALL_DIR%\vscode_projects"
 
