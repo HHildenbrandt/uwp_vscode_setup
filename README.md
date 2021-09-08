@@ -14,7 +14,7 @@ Run `setup_X.bat`. Accept all default choices and ignore warnings. The command w
 ## Install on regular Windows (C-drive)
 
 Download the msys2 installer from https://www.msys2.org. Run the installer.
-Leave the installation folder at dafault (`C:\msys64`)
+Leave the installation folder at default (`C:\msys64`)
 
 Download this repository as zip and extract it to, say, the Desktop.
 Run `setup_C.bat`. Accept all default choices and ignore warnings.
