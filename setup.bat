@@ -1,15 +1,12 @@
 @echo off
 
-:: install script for vscode + msys2
+:: install script for vscode + msys2 on UWP (X-Drive)
 :: Hanno 2021
 
 setlocal
 
-:: per default, INSTALL_DIR points to the X-drive and
-:: PROJECT_DIR to X:\vscode_projects. If you are not on UWP,
-:: you can change those paths to your liking
-SET INSTALL_DIR=X:
-SET PROJECT_DIR=%INSTALL_DIR%\vscode_projects"
+SET INSTALL_DIR=C:
+SET PROJECT_DIR=%INSTALL_DIR%\vscode_projects
 
 SET MSYS=%INSTALL_DIR%/msys64
 SET PATH=%MSYS%/usr/bin/;%MSYS%/mingw64/bin/;%INSTALL_DIR%\vscode\bin\;%PATH%
@@ -25,7 +22,7 @@ call :fetch_vscode
 call :install_code_extension ms-vscode.cmake-tools
 call :install_code_extension ms-vscode.cpptools
 :: call :install_code_extension fougas.msys2
-:: call :install_code_extension shd101wyy.markdown-preview-enhanced
+call :install_code_extension shd101wyy.markdown-preview-enhanced
 call :create_project_dir
 exit /B %ERRORLEVEL%
 
@@ -49,13 +46,13 @@ unzip vscode.zip -d %INSTALL_DIR%\vscode
 del vscode.zip
 exit /B 0
 
+:install_code_extension
+echo installing %~1
+call code --disable-gpu --install-extension %~1 --force
+exit /B 0
+
 :create_project_dir
 mkdir %PROJECT_DIR%
 echo SET PATH=%MSYS%/mingw64/bin/;%INSTALL_DIR%\vscode\bin\;%%PATH%% > %PROJECT_DIR%\launch_vscode.bat
 echo code --disable-gpu . >> %PROJECT_DIR%\launch_vscode.bat
-exit /B 0
-
-:install_code_extension
-echo installing %~1
-call code --disable-gpu --install-extension %~1 --force
 exit /B 0
