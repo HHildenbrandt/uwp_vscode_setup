@@ -2,7 +2,6 @@
 
 Installation of the stuff in 'user-land'. No pre-installed software or admin-rights needed. 
 
-
 ## Local Install
 
 Click the green(?) 'Code' button and select "Download as zip".<br>
@@ -67,9 +66,30 @@ exit
 
 And press `Enter`.
 
-
 ### Tools
 
 * [Standalone wget.exe](https://github.com/webfolderio/wget-windows.git).
 * [Msys2 Software Distribution and Building Platform for Windows](https://www.msys2.org/).
 * [Visual Studio Code](https://code.visualstudio.com).
+
+## Release notes
+
+### 2023
+
+* `clang-17`, `llvm`, `MImode: lldb` from the `ucrt` branch.
+* `bootstrap.bat` downloads and installs msys2.<br>
+Selects appropriate install path for UWP, FSE and local Windows.<br>
+Now user interaction needed.<br>
+Creates `cpp4bio` folder in the installation root (should be portable).
+* `bootstrap.bat <DriveLetter>` creates portable install on external drive.
+* First project is `cpp4bio\projects\hello_world`.
+* New projects can be created by simply 'copy & rename' an existing one.
+* `projects\xyz\.vscode` contains a bunch of specialized `.json` files.<br>
+Empty `"args": []` property in `.vscode\launch.json`.
+* `projects\xyz\CMakeList.txt` copes with whitespaces in project folder names.<br>
+`main.cpp` is the only remaining hard-coded dependency.<br>
+Binaries are build as `projects\xyz\build\<FolderName>.exe` (whitespaces replaced with `'_'`).<br>
+Static link.
+* `projects\xyz\open_with_vscode.bat` normalize install path.<br>
+Removes `./build` (read: clears cmake cache).<br>
+Calls `vscode` with `--disable-gpu --no-sandbox` flags.
