@@ -38,7 +38,7 @@ And press `Enter`.
 
 Click the green(?) 'Code' button and select "Download as zip".<br>
 Extract the downloaded file to, say, the Desktop.<br>
-**Don't extract to an network-share** as this would break things.<br>
+**Don't extract to an network-share, onedrive, google-drive or dropbox** as this would break things.<br>
 Open the extracted folder and type `powershell` + `Enter` in the File Explorer Address bar to open a terminal.
 In the terminal, type:
 
@@ -78,18 +78,22 @@ And press `Enter`.
 
 * `clang-17`, `llvm`, `MImode: lldb` from the `ucrt` branch.
 * `bootstrap.bat` downloads and installs msys2.<br>
-Selects appropriate install path for UWP, FSE and local Windows.<br>
+Selects appropriate install path (`%HOMEDRIVE%%HOMEPATH%`) for UWP, FSE and local Windows.<br>
+Note that on UWP this path is *different* to `%USERPROFILE%` - great!<br>
 Now user interaction needed.<br>
 Creates `cpp4bio` folder in the installation root (should be portable).
 * `bootstrap.bat <DriveLetter>` creates portable install on external drive.
 * First project is `cpp4bio\projects\hello_world`.
-* New projects can be created by simply 'copy & rename' an existing one.
+* New projects can be created by simply 'copy & rename' an existing one (as long as under `projects\`).
 * `projects\xyz\.vscode` contains a bunch of specialized `.json` files.<br>
-Empty `"args": []` property in `.vscode\launch.json`.
+Automates cmake configure (`.vscode\settings.json`).<br>
+Empty `"args": []` property in `.vscode\launch.json`.<br>
+(Re)build task in `.vscode\tasks.json`.<br>
+Much cleaner debugging experience.
 * `projects\xyz\CMakeList.txt` copes with whitespaces in project folder names.<br>
 `main.cpp` is the only remaining hard-coded dependency.<br>
 Binaries are build as `projects\xyz\build\<FolderName>.exe` (whitespaces replaced with `'_'`).<br>
 Static link.
-* `projects\xyz\open_with_vscode.bat` normalize install path.<br>
+* `projects\xyz\open_with_vscode.bat` normalized `PATH` environment variable.<br>
 Removes `./build` (read: clears cmake cache).<br>
 Calls `vscode` with `--disable-gpu --no-sandbox` flags.
