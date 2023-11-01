@@ -82,6 +82,7 @@ And press `Enter`.
 Selects appropriate install path (`%HOMEDRIVE%%HOMEPATH%`) for UWP, FSE and local Windows.<br>
 Note that on UWP this path is *different* to `%USERPROFILE%` - great!<br>
 No user interaction needed.<br>
+Portable vscode install.<br>
 Creates `cpp4bio` folder in the installation root (should be portable).
 * `bootstrap.bat <DriveLetter>` creates portable install on external drive.
 * First project is `cpp4bio\projects\hello_world`.
