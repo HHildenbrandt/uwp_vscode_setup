@@ -83,4 +83,5 @@ exit /B 0
 :create_project_dir
 mkdir "%PROJECT_DIR%"
 xcopy /E /I "%CWD%hello_world" "%PROJECT_DIR%\hello_world"
+copy "%CWD%hello_world\open_with_vscode.bat" "%INSTALL_DIR%\cpp4bio\vscode.cmd"
 exit /B 0
