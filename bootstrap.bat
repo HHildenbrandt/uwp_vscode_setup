@@ -23,7 +23,7 @@ SET LAUNCH_ARGS=%~2
 SET INSTALL_DIR=%INSTALL_DIR%\cpp4bio
 SET PROJECT_DIR=%INSTALL_DIR%\projects
 SET MSYS=%INSTALL_DIR%\msys64
-SET VSCODE_DIR=%INSTALL_DIR\vscode
+SET VSCODE_DIR=%INSTALL_DIR%\vscode
 SET PATH=%MSYS%\usr\bin\;%MSYS%\mingw64\bin\;%MSYS%\ucrt64\bin\;%VSCODE_DIR%\bin\;%PATH%
 
 :: msys2
@@ -45,6 +45,7 @@ call :create_project_dir
 echo :
 echo Installation succeeded!
 echo * MSYS: %MSYS%
+echo * VSCODE: %VSCODE_DIR%
 echo * INSTALL_DIR: %INSTALL_DIR%
 echo * PROJECT_DIR: %PROJECT_DIR%
 echo:
