@@ -20,6 +20,7 @@ Once the install is done, the script tells you where it has installed stuff, e.g
 ```powershell
 Installation succeeded:
 * MSYS: C:\Users\user_name\cpp4bio\msys64
+* VSCODE_DIR: C:\Users\user_name\cpp4bio\vscode
 * INSTALL_DIR: C:\Users\user_name\cpp4bio
 * PROJECT_DIR: C:\Users\user_name\cpp4bio\projects
 ```
