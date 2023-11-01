@@ -23,7 +23,8 @@ SET LAUNCH_ARGS=%~2
 SET INSTALL_DIR=%INSTALL_DIR%\cpp4bio
 SET PROJECT_DIR=%INSTALL_DIR%\projects
 SET MSYS=%INSTALL_DIR%\msys64
-SET PATH=%MSYS%\usr\bin\;%MSYS%\mingw64\bin\;%MSYS%\ucrt64\bin\;%INSTALL_DIR%\vscode\bin\;%PATH%
+SET VSCODE_DIR=%INSTALL_DIR\vscode
+SET PATH=%MSYS%\usr\bin\;%MSYS%\mingw64\bin\;%MSYS%\ucrt64\bin\;%VSCODE_DIR%\bin\;%PATH%
 
 :: msys2
 echo Installing msys2 installler. This will take some time...
@@ -67,8 +68,10 @@ exit /B 0
 
 :fetch_vscode
 wget "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-archive" -O vscode.zip
-unzip vscode.zip -d "%INSTALL_DIR%/vscode"
+unzip vscode.zip -d "%VSCODE_DIR%"
 del vscode.zip
+:: enable portable mode
+mkdir "%VSCODE_DIR%/data"
 exit /B 0
 
 :install_code_extension
