@@ -1,0 +1,11 @@
+<Configuration>
+  <VGpu>Disable</VGpu>
+  <Networking>Enable</Networking>
+  <MappedFolders>
+    <MappedFolder>
+      <HostFolder>%USERPROFILE%\Desktop\uwp_vscode_setup</HostFolder>
+      <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\uwp_vscode_setup</SandboxFolder>
+      <ReadOnly>false</ReadOnly>
+    </MappedFolder>
+  </MappedFolders>
+</Configuration>

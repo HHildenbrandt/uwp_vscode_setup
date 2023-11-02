@@ -19,13 +19,14 @@ Once the install is done, the script tells you where it has installed stuff, e.g
 
 ```powershell
 Installation succeeded:
-* INSTALL_DIR: C:\Users\user_name\Desktop\cpp4bio
-* MSYS: C:\Users\user_name\Desktop\cpp4bio\msys64
-* VSCODE_DIR: C:\Users\user_name\Desktop\cpp4bio\vscode
-* PROJECT_DIR: C:\Users\user_name\Desktop\cpp4bio\projects
+* INSTALL_DIR: C:\Users\<user_name<\Desktop\cpp4bio
+* MSYS: C:\Users\<user_name>\Desktop\cpp4bio\msys64
+* VSCODE_DIR: C:\Users\<user_name>\Desktop\cpp4bio\vscode
+* PROJECT_DIR: C:\Users\<user_name>\Desktop\cpp4bio\projects
 ```
 
 Take a note of the `PROJECT_DIR` as this is the root folder of our journey into C++.<br>
+In most cases, this points to the `projects` folder inside `cpp4bio` on your Desktop.
 To close the terminal, type:
 
 ```powershell

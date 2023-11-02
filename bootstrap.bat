@@ -36,11 +36,12 @@ SET MSYS=%INSTALL_DIR%\msys64
 SET VSCODE_DIR=%INSTALL_DIR%\vscode
 SET PATH=%MSYS%\usr\bin\;%MSYS%\mingw64\bin\;%MSYS%\ucrt64\bin\;%VSCODE_DIR%\bin\;%PATH%
 
+mkdir "%CWD%\tmp"
 
 :: msys2
 echo Installing msys2 installler. This will take some time...
-.\wget.exe "https://github.com/msys2/msys2-installer/releases/download/2022-09-04/msys2-x86_64-20220904.exe" -O msys2.exe
-.\msys2.exe in -c --root "%MSYS%"
+.\wget.exe --no-hsts "https://github.com/msys2/msys2-installer/releases/download/2022-09-04/msys2-x86_64-20220904.exe" -O tmp\msys2.exe
+tmp\msys2.exe in -c --root "%MSYS%"
 call :update_pacman_repositories
 call :update_msys
 call :install_develop_shebang
@@ -61,6 +62,7 @@ echo * VSCODE: %VSCODE_DIR%
 echo * INSTALL_DIR: %INSTALL_DIR%
 echo * PROJECT_DIR: %PROJECT_DIR%
 echo:
+explorer.exe "%INSTALL_DIR%"
 exit /B %ERRORLEVEL%
 
 :update_pacman_repositories
@@ -80,9 +82,8 @@ pacman -S --noconfirm --needed mingw-w64-ucrt-x86_64-clang mingw-w64-ucrt-x86_64
 exit /B 0
 
 :fetch_vscode
-wget "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-archive" -O vscode.zip
-unzip vscode.zip -d "%VSCODE_DIR%"
-del vscode.zip
+wget --no-hsts "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-archive" -O tmp\vscode.zip
+unzip tmp\vscode.zip -d "%VSCODE_DIR%"
 :: enable portable mode
 mkdir "%VSCODE_DIR%/data"
 exit /B 0
@@ -94,6 +95,6 @@ exit /B 0
 
 :create_project_dir
 mkdir "%PROJECT_DIR%"
-xcopy /E /I "%CWD%hello_world" "%PROJECT_DIR%\hello_world"
-copy "%CWD%hello_world\open_with_vscode.bat" "%INSTALL_DIR%\vscode.cmd"
+xcopy /E /I "%CWD%template" "%PROJECT_DIR%\hello_world"
+copy "%CWD%template\open_with_vscode.bat" "%INSTALL_DIR%\vscode.cmd"
 exit /B 0
