@@ -19,10 +19,10 @@ Once the install is done, the script tells you where it has installed stuff, e.g
 
 ```powershell
 Installation succeeded:
-* MSYS: C:\Users\user_name\cpp4bio\msys64
-* VSCODE_DIR: C:\Users\user_name\cpp4bio\vscode
-* INSTALL_DIR: C:\Users\user_name\cpp4bio
-* PROJECT_DIR: C:\Users\user_name\cpp4bio\projects
+* INSTALL_DIR: C:\Users\user_name\Desktop\cpp4bio
+* MSYS: C:\Users\user_name\Desktop\cpp4bio\msys64
+* VSCODE_DIR: C:\Users\user_name\Desktop\cpp4bio\vscode
+* PROJECT_DIR: C:\Users\user_name\Desktop\cpp4bio\projects
 ```
 
 Take a note of the `PROJECT_DIR` as this is the root folder of our journey into C++.<br>
@@ -53,8 +53,9 @@ Once the install is done, the script tells you where it has installed stuff, e.g
 
 ```powershell
 Installation succeeded:
-* MSYS: D:\msys64
 * INSTALL_DIR: D:\cpp4bio
+* MSYS: D:\cpp4bio\msys64
+* VSCODE_DIR: D\:cpp4bio\vscode
 * PROJECT_DIR: D:\cpp4bio\projects
 ```
 
