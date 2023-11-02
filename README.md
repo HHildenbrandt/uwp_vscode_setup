@@ -7,34 +7,8 @@ Installation of the stuff in 'user-land'. No pre-installed software or admin-rig
 Click the green(?) 'Code' button and select "Download as zip".<br>
 Extract the downloaded file to, say, the Desktop.<br>
 **Don't extract to an network-share** as this would break things.<br>
-Open the extracted folder and type `powershell + Enter` in the File Explorer Address bar to open a terminal.
-In the terminal, type:
-
-```powershell
-.\bootstrap.bat
-```
-
-Press `Enter` to start the (lengthy) installation process.<br>
-Once the install is done, the script tells you where it has installed stuff, e.g.:
-
-```powershell
-Installation succeeded:
-* INSTALL_DIR: C:\Users\<user_name<\Desktop\cpp4bio
-* MSYS: C:\Users\<user_name>\Desktop\cpp4bio\msys64
-* VSCODE_DIR: C:\Users\<user_name>\Desktop\cpp4bio\vscode
-* PROJECT_DIR: C:\Users\<user_name>\Desktop\cpp4bio\projects
-```
-
-Take a note of the `PROJECT_DIR` as this is the root folder of our journey into C++.<br>
-In most cases, this points to the `projects` folder inside `cpp4bio` on your Desktop.
-To close the terminal, type:
-
-```powershell
-exit
-```
-
-And press `Enter`.
-
+Open the extracted folder run (double-click) `bootstrap.bat`.<br>
+After quite some time, File Explorer will open the install root folder.
 
 ## Install to external drive
 
@@ -50,7 +24,7 @@ In the terminal, type:
 
 Replace `D:` with the drive-letter of your external drive.<br>
 Press `Enter` to start the (lengthy) installation process.<br>
-Once the install is done, the script tells you where it has installed stuff, e.g.:
+Once the install is done, the script will open the File Explorer tells you where it has installed stuff, e.g.:
 
 ```powershell
 Installation succeeded:

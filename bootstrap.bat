@@ -95,6 +95,6 @@ exit /B 0
 
 :create_project_dir
 mkdir "%PROJECT_DIR%"
-xcopy /E /I "%CWD%template" "%PROJECT_DIR%\hello_world"
-copy "%CWD%template\open_with_vscode.bat" "%INSTALL_DIR%\vscode.cmd"
+xcopy /E /I "%CWD%templates" "%PROJECT_DIR%\hello_world"
+copy "%CWD%templates\vscode.cmd" "%INSTALL_DIR%\vscode.cmd"
 exit /B 0
