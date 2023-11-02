@@ -79,11 +79,10 @@ And press `Enter`.
 
 * `clang-17`, `llvm`, `MImode: lldb` from the `ucrt` branch.
 * `bootstrap.bat` downloads and installs msys2.<br>
-Selects appropriate install path (`%HOMEDRIVE%%HOMEPATH%\Desktop` for UWP,<br>
+Selects appropriate default install path (`%HOMEDRIVE%%HOMEPATH%\Desktop` for UWP,<br>
 `%HOMEDRIVE%%HOMEPATH%\Desktop` for FSE and local Windows).<br>
-Note that on UWP this path is *different* to `%USERPROFILE%` - great!<br>
 No user interaction needed.<br>
-Portable vscode install.<br>
+Portable install.<br>
 Creates `cpp4bio` folder in the installation root (should be portable).
 * `bootstrap.bat <DriveLetter>` creates portable install on external drive.
 * First project is `cpp4bio\projects\hello_world`.
