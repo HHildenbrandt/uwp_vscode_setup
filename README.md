@@ -79,7 +79,8 @@ And press `Enter`.
 
 * `clang-17`, `llvm`, `MImode: lldb` from the `ucrt` branch.
 * `bootstrap.bat` downloads and installs msys2.<br>
-Selects appropriate install path (`%HOMEDRIVE%%HOMEPATH%`) for UWP, FSE and local Windows.<br>
+Selects appropriate install path (`%HOMEDRIVE%%HOMEPATH%\Desktop` for UWP,<br>
+`%HOMEDRIVE%%HOMEPATH%\Desktop` for FSE and local Windows).<br>
 Note that on UWP this path is *different* to `%USERPROFILE%` - great!<br>
 No user interaction needed.<br>
 Portable vscode install.<br>
