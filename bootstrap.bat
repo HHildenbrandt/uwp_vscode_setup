@@ -14,8 +14,18 @@ SET INSTALL_DIR=%HOMEDRIVE%%HOMEPATH%
 
 IF "%~1" == "" GOTO :USE_DEFAULT_INSTALL_DIR
 SET INSTALL_DIR=%~1
+GOTO :set_launch_args
 
 :USE_DEFAULT_INSTALL_DIR
+:: choose "%INSTALL_DIR%\My Desktop" (UWP)
+:: or     "%INSTALL_DIR%\Desktop" (otherwise)
+IF exist "%INSTALL_DIR%\My Desktop" ( 
+    SET INSTALL_DIR=%INSTALL_DIR%\My Desktop
+) ELSE (
+    if exist "%INSTALL_DIR%\Desktop" SET INSTALL_DIR=%INSTALL_DIR%\Desktop
+)
+
+:set_launch_args
 IF "%~2" == "" GOTO :USE_DEFAULT_LAUNCH_ARGS
 SET LAUNCH_ARGS=%~2
 
@@ -25,6 +35,7 @@ SET PROJECT_DIR=%INSTALL_DIR%\projects
 SET MSYS=%INSTALL_DIR%\msys64
 SET VSCODE_DIR=%INSTALL_DIR%\vscode
 SET PATH=%MSYS%\usr\bin\;%MSYS%\mingw64\bin\;%MSYS%\ucrt64\bin\;%VSCODE_DIR%\bin\;%PATH%
+
 
 :: msys2
 echo Installing msys2 installler. This will take some time...
@@ -42,7 +53,8 @@ call :install_code_extension fougas.msys2
 call :install_code_extension shd101wyy.markdown-preview-enhanced
 call :create_project_dir
 
-echo :
+:regards
+echo:
 echo Installation succeeded!
 echo * MSYS: %MSYS%
 echo * VSCODE: %VSCODE_DIR%
