@@ -96,5 +96,6 @@ exit /B 0
 :create_project_dir
 mkdir "%PROJECT_DIR%"
 xcopy /E /I "%CWD%templates" "%PROJECT_DIR%\hello_world"
-copy "%CWD%templates\vscode.cmd" "%INSTALL_DIR%\vscode.cmd"
+move /Y "%PROJECT_DIR%\hello_world\setvars.bat" "%INSTALL_DIR%\setvars.bat"
+::del /q "%PROJECT_DIR%\hello_world\vscode.cmd"
 exit /B 0
