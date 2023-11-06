@@ -40,20 +40,21 @@ SET PATH=%MSYS%\usr\bin\;%MSYS%\mingw64\bin\;%MSYS%\ucrt64\bin\;%VSCODE_DIR%\bin
 
 mkdir "%CWD%\tmp"
 
-:: msys2
-echo Installing msys2 installler. This will take some time...
-.\wget.exe --no-hsts "https://github.com/msys2/msys2-installer/releases/download/2022-09-04/msys2-x86_64-20220904.exe" -O tmp\msys2.exe
+::  msys2
+call :fetch "https://github.com/msys2/msys2-installer/releases/download/2022-09-04/msys2-x86_64-20220904.exe" "tmp\msys2.exe" || goto :cleanup
 tmp\msys2.exe in -c --root "%MSYS%"
 call :update_pacman_repositories || goto :cleanup
 
 :: vscode
-call :fetch_vscode
-
-:: required extensions
+call :fetch "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-archive" "tmp\vscode.zip" || goto :cleanup
+unzip tmp\vscode.zip -d "%VSCODE_DIR%"
+:: enable portable mode
+mkdir "%VSCODE_DIR%/data"
+:: required vscode extensions
 call :install_code_extension ms-vscode.cpptools-extension-pack || goto :cleanup
 call :install_code_extension ms-vscode.cmake-tools || goto :cleanup
 call :install_code_extension shd101wyy.markdown-preview-enhanced || goto :cleanup
-:: optional extensions
+:: optional vscode extensions
 call :install_code_extension ms-vscode-remote.remote-wsl || goto :cleanup
 
 :: create project dir
@@ -85,11 +86,16 @@ pacman -S --noconfirm --needed mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64
 pacman -S --noconfirm --needed mingw-w64-ucrt-x86_64-clang mingw-w64-ucrt-x86_64-lldb-mi
 exit /B
 
-:fetch_vscode
-wget --no-hsts "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-archive" -O tmp\vscode.zip
-unzip tmp\vscode.zip -d "%VSCODE_DIR%"
-:: enable portable mode
-mkdir "%VSCODE_DIR%/data"
+:fetch
+:: workaround for wget's "Unable to establish SSL connection" quirk.
+set /a "x = 0"
+echo %1
+:fetch_retry
+if %x% leq 5 (
+    .\wget.exe --no-hsts %1 -O %2 && goto :eof
+    set /a "x = x + 1"
+    goto :fetch_retry
+)
 exit /B
 
 :install_code_extension
