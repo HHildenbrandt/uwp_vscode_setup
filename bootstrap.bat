@@ -38,16 +38,14 @@ SET VSCODE_DATA=%VSCODE_DIR%\data
 SET VSCODE_USER=%VSCODE_DATA%\user-data\User
 SET PATH=%MSYS%\usr\bin\;%MSYS%\mingw64\bin\;%MSYS%\ucrt64\bin\;%VSCODE_DIR%\bin\;%PATH%
 
-mkdir "%CWD%\tmp"
-
 ::  msys2
-call :fetch "https://github.com/msys2/msys2-installer/releases/download/2022-09-04/msys2-x86_64-20220904.exe" "tmp\msys2.exe" || goto :cleanup
-tmp\msys2.exe in -c --root "%MSYS%"
+call :fetch "https://github.com/msys2/msys2-installer/releases/download/2022-09-04/msys2-x86_64-20220904.exe" "%TMP%\msys2.exe" || goto :cleanup
+%TMP%\msys2.exe in -c --root "%MSYS%"
 call :update_pacman_repositories || goto :cleanup
 
 :: vscode
-call :fetch "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-archive" "tmp\vscode.zip" || goto :cleanup
-unzip tmp\vscode.zip -d "%VSCODE_DIR%"
+call :fetch "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-archive" "%TMP%\vscode.zip" || goto :cleanup
+unzip "%TMP%\vscode.zip" -d "%VSCODE_DIR%"
 :: enable portable mode
 mkdir "%VSCODE_DIR%/data"
 :: required vscode extensions
@@ -63,7 +61,7 @@ xcopy /E /I "%CWD%templates\hello_world" "%PROJECT_DIR%\hello_world"
 copy /Y "%CWD%templates\setvars.bat" "%INSTALL_DIR%\setvars.bat"
 copy /Y "%CWD%templates\user_settings.json" "%VSCODE_USER%\settings.json"
 copy /Y "%CWD%templates\argv.json" "%VSCODE_DATA%\argv.json"
-%INSTALL_DIR%\setvars.bat
+call %INSTALL_DIR%\setvars.bat
 
 :regards
 echo:
