@@ -24,17 +24,7 @@ In the terminal, type:
 
 Replace `D:` with the drive-letter of your external drive.<br>
 Press `Enter` to start the (lengthy) installation process.<br>
-Once the install is done, the script will open the File Explorer tells you where it has installed stuff, e.g.:
-
-```powershell
-Installation succeeded:
-* INSTALL_DIR: D:\cpp4bio
-* MSYS: D:\cpp4bio\msys64
-* VSCODE_DIR: D\:cpp4bio\vscode
-* PROJECT_DIR: D:\cpp4bio\projects
-```
-
-Take a note of the `PROJECT_DIR` as this is the root folder of our journey into C++.<br>
+Once the install is done, File Explorer will open the install root folder.<br>
 To close the terminal, type:
 
 ```powershell
