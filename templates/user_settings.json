@@ -1,4 +1,6 @@
 {
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
     "security.workspace.trust.enabled": false,
     "cmake": {
         "configureOnEdit": true,

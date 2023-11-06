@@ -51,11 +51,11 @@ unzip tmp\vscode.zip -d "%VSCODE_DIR%"
 :: enable portable mode
 mkdir "%VSCODE_DIR%/data"
 :: required vscode extensions
-call :install_code_extension ms-vscode.cpptools-extension-pack || goto :cleanup
-call :install_code_extension ms-vscode.cmake-tools || goto :cleanup
-call :install_code_extension shd101wyy.markdown-preview-enhanced || goto :cleanup
+call :install_code_extension ms-vscode.cpptools-extension-pack
+call :install_code_extension ms-vscode.cmake-tools
+call :install_code_extension shd101wyy.markdown-preview-enhanced
 :: optional vscode extensions
-call :install_code_extension ms-vscode-remote.remote-wsl || goto :cleanup
+call :install_code_extension ms-vscode-remote.remote-wsl
 
 :: create project dir
 mkdir "%PROJECT_DIR%"
@@ -63,6 +63,7 @@ xcopy /E /I "%CWD%templates\hello_world" "%PROJECT_DIR%\hello_world"
 copy /Y "%CWD%templates\setvars.bat" "%INSTALL_DIR%\setvars.bat"
 copy /Y "%CWD%templates\user_settings.json" "%VSCODE_USER%\settings.json"
 copy /Y "%CWD%templates\argv.json" "%VSCODE_DATA%\argv.json"
+%INSTALL_DIR%\setvars.bat
 
 :regards
 echo:
