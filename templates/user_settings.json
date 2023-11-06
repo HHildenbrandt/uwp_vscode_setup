@@ -1,0 +1,9 @@
+{
+    "security.workspace.trust.enabled": false,
+    "cmake": {
+        "configureOnEdit": true,
+        "configureOnOpen": true,
+        "automaticReconfigure": true,
+        "buildBeforeRun": true
+	}
+}
