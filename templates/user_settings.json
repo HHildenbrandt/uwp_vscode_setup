@@ -1,11 +1,7 @@
 {
+    "git.ignoreLimitWarning": true,
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     "security.workspace.trust.enabled": false,
-    "cmake": {
-        "configureOnEdit": true,
-        "configureOnOpen": true,
-        "automaticReconfigure": true,
-        "buildBeforeRun": true
-	}
+    "task.allowAutomaticTasks": "on"
 }

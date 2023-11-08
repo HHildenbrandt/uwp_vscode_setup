@@ -3,7 +3,6 @@
 
 int main()
 {
-    auto msg = "Hello World!";
-    std::cout << msg << std::endl;
+    std::cout << "Hello world!" << std::endl;
     return 0;
 }

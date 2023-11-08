@@ -15,6 +15,7 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "lldb",
+            "miDebuggerPath": "${workspaceFolder}/../../ucrt64/bin/lldb-mi.exe",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for lldb",
@@ -27,7 +28,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "CMake: build"
+            "preLaunchTask": "CMake: clean rebuild"
         }
     ]
 }

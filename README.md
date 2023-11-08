@@ -2,19 +2,24 @@
 
 Installation of the stuff in 'user-land'. No pre-installed software or admin-rights needed. 
 
-## Local Install
+## Download as blob
 
-Click the green(?) 'Code' button and select "Download as zip".<br>
-Extract the downloaded file to, say, the Desktop.<br>
-**Don't extract to an network-share** as this would break things.<br>
-Open the extracted folder run (double-click) `bootstrap.bat`.<br>
-After quite some time, File Explorer will open the install root folder.
+A pre-configured `cpp4bio` root folder could be found [in our shared folder](https://drive.google.com/drive/folders/1D3FQNhDLFY7mzvIzMqOtc9LIBlh_yaRr?usp=share_link)<br>
+Download `cpp4bio_2023.zip`, open the `zip` file and move the contained folder `cpp4bio` to your Desktop.
 
-## Install to external drive
+## Generate the root folder
 
-Click the green(?) 'Code' button and select "Download as zip".<br>
-Extract the downloaded file to, say, the Desktop.<br>
-**Don't extract to an network-share, onedrive, google-drive or dropbox** as this would break things.<br>
+### Local
+
+Download [this repository as zip](https://github.com/HHildenbrandt/uwp_vscode_setup/archive/refs/heads/master.zip)
+and extract it to, say, your Desktop. **Don't extract to an network-share** as this would break things.<br>
+Open the extracted folder and run (double-click) `bootstrap.bat`.<br>
+After quite some time, File Explorer will open our `cpp4bio` root folder.
+
+### External drive
+
+Download [this repository as zip](https://github.com/HHildenbrandt/uwp_vscode_setup/archive/refs/heads/master.zip)
+and extract it to, say, your Desktop. **Don't extract to an network-share** as this would break things.<br>
 Open the extracted folder and type `powershell` + `Enter` in the File Explorer Address bar to open a terminal.
 In the terminal, type:
 
@@ -24,7 +29,7 @@ In the terminal, type:
 
 Replace `D:` with the drive-letter of your external drive.<br>
 Press `Enter` to start the (lengthy) installation process.<br>
-Once the install is done, File Explorer will open the install root folder.<br>
+Once the install is done, File Explorer will open our `cpp4bio` root folder.<br>
 To close the terminal, type:
 
 ```powershell
@@ -33,7 +38,7 @@ exit
 
 And press `Enter`.
 
-### Tools
+## Tools
 
 * [Standalone wget.exe](https://github.com/webfolderio/wget-windows.git).
 * [Msys2 Software Distribution and Building Platform for Windows](https://www.msys2.org/).
@@ -62,6 +67,5 @@ Much cleaner debugging experience.
 `main.cpp` is the only remaining hard-coded dependency.<br>
 Binaries are build as `projects\xyz\build\<FolderName>.exe` (whitespaces replaced with `'_'`).<br>
 Static link.
-* `projects\xyz\open_with_vscode.bat` normalized `PATH` environment variable.<br>
-Removes `./build` (read: clears cmake cache).<br>
-Calls `vscode` with `--disable-gpu --no-sandbox` flags.
+* Project folders can be copied & renamed. Run the script `cleanup.bat` in the new folder.
+before you open it in `vscode`.

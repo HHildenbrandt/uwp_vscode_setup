@@ -9,6 +9,10 @@
 
 @echo off
 setlocal
+
+SET MSYS2_URI="https://github.com/msys2/msys2-installer/releases/download/2022-09-04/msys2-x86_64-20220904.exe"
+SET VSCODE_URI="https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-archive"
+
 SET CWD=%~dp0
 SET INSTALL_DIR=%HOMEDRIVE%%HOMEPATH%
 
@@ -39,15 +43,16 @@ SET VSCODE_USER=%VSCODE_DATA%\user-data\User
 SET PATH=%MSYS%\usr\bin\;%MSYS%\mingw64\bin\;%MSYS%\ucrt64\bin\;%VSCODE_DIR%\bin\;%PATH%
 
 ::  msys2
-call :fetch "https://github.com/msys2/msys2-installer/releases/download/2022-09-04/msys2-x86_64-20220904.exe" "%TMP%\msys2.exe" || goto :cleanup
+call :fetch "%MSYS2_URI%" "%TMP%\msys2.exe" || goto :cleanup
 %TMP%\msys2.exe in -c --root "%MSYS%"
 call :update_pacman_repositories || goto :cleanup
 
 :: vscode
-call :fetch "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-archive" "%TMP%\vscode.zip" || goto :cleanup
+call :fetch %VSCODE_URI% %TMP%\vscode.zip || goto :cleanup
 unzip "%TMP%\vscode.zip" -d "%VSCODE_DIR%"
 :: enable portable mode
 mkdir "%VSCODE_DIR%/data"
+
 :: required vscode extensions
 call :install_code_extension ms-vscode.cpptools-extension-pack
 call :install_code_extension ms-vscode.cmake-tools
@@ -61,19 +66,12 @@ xcopy /E /I "%CWD%templates\hello_world" "%PROJECT_DIR%\hello_world"
 copy /Y "%CWD%templates\setvars.bat" "%INSTALL_DIR%\setvars.bat"
 copy /Y "%CWD%templates\user_settings.json" "%VSCODE_USER%\settings.json"
 copy /Y "%CWD%templates\argv.json" "%VSCODE_DATA%\argv.json"
-call %INSTALL_DIR%\setvars.bat
 
-:regards
-echo:
-echo Installation succeeded!
-echo * INSTALL_DIR: %INSTALL_DIR%
-echo * MSYS: %MSYS%
-echo * VSCODE_DIR: %VSCODE_DIR%
-echo * VSCODE_USER: %VSCODE_USER%
-echo * PROJECT_DIR: %PROJECT_DIR%
-echo:
+:: create final installation dir
+move /Y "%MSYS%\ucrt64" "%INSTALL_DIR%"
+rmdir /s /q "%MSYS%"
 explorer.exe "%INSTALL_DIR%"
-exit /B 0
+goto :eof
 
 :update_pacman_repositories
 :: check disk space seg-faults on UWP - disable it
@@ -81,7 +79,7 @@ sed -i 's/^CheckSpace/#CheckSpace/g' "%MSYS%/etc/pacman.conf"
 :: clumsy way to initialize keys
 pacman --noconfirm -Suyy
 pacman -S --noconfirm --needed unzip git 
-pacman -S --noconfirm --needed mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-ninja
+pacman -S --noconfirm --needed mingw-w64-ucrt-x86_64-make mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-ninja
 pacman -S --noconfirm --needed mingw-w64-ucrt-x86_64-clang mingw-w64-ucrt-x86_64-lldb-mi
 exit /B
 
