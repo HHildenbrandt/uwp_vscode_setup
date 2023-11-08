@@ -4,7 +4,7 @@ Installation of the stuff in 'user-land'. No pre-installed software or admin-rig
 
 ## Download as blob
 
-A pre-configured `cpp4bio` root folder could be found [in our shared folder](https://drive.google.com/drive/folders/1D3FQNhDLFY7mzvIzMqOtc9LIBlh_yaRr?usp=share_link)<br>
+A pre-configured `cpp4bio` root folder could be found [in our shared folder](https://drive.google.com/drive/folders/1D3FQNhDLFY7mzvIzMqOtc9LIBlh_yaRr?usp=share_link).<br>
 Download `cpp4bio_2023.zip`, open the `zip` file and move the contained folder `cpp4bio` to your Desktop.
 
 ## Generate the root folder
